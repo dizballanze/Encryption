@@ -3,6 +3,7 @@ include 'Crypter.php';
 include 'CesarCrypter.php';
 include 'VizhinerCrypter.php';
 include 'VizhinerTableCrypter.php';
+include 'RelocationCrypter.php';
 
 // Алгоритм Цезаря
 $crypter = new CesarCrypter(16);
@@ -32,3 +33,10 @@ foreach ($crypter->getTable() as $row) {
     $str_table .= "\n";
 }
 file_put_contents('table.txt', $str_table);
+
+// Простой перестановочный шифр
+$crypter = new RelocationCrypter('ШИКАНОВ');
+$crypted = $crypter->encrypt(file_get_contents('plain4.txt'));
+file_put_contents('shifr4.txt', $crypted);
+$plain = $crypter->decrypt($crypted);
+file_put_contents('open4.txt', $plain);
