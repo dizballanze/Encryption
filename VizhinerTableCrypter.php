@@ -58,6 +58,10 @@ class VizhinerTableCrypter implements  Crypter {
         return $plain;
     }
 
+    public function getTable() {
+        return $this->table;
+    }
+
     protected function split_string($str) {
         $characters = array();
         for ($i = 0; $i <= mb_strlen($str, 'UTF-8') - 1; $i++) {

@@ -24,3 +24,11 @@ $crypted = $crypter->encrypt(file_get_contents('plain3.txt'));
 file_put_contents('shifr3.txt', $crypted);
 $plain = $crypter->decrypt($crypted);
 file_put_contents('open3.txt', $plain);
+$str_table = '';
+foreach ($crypter->getTable() as $row) {
+    foreach ($row as $symbol) {
+        $str_table .= $symbol . ' ';
+    }
+    $str_table .= "\n";
+}
+file_put_contents('table.txt', $str_table);
